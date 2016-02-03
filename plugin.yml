@@ -3,3 +3,5 @@ version: 0.0.1
 author: QuickScythe
 description: Survival plugin the Eridauni server.
 main: me.quickScythe.eridaunisurvival.Main
+commands:
+  poll:
