@@ -5,9 +5,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.quickScythe.eridaunicore.utils.Utils;
+import me.quickScythe.eridaunicore.utils.CoreUtils;
 import me.quickScythe.eridaunisurvival.Main;
 import me.quickScythe.eridaunisurvival.utils.PollUtils;
+import me.quickScythe.eridaunisurvival.utils.Utils;
 
 public class PollCommand implements CommandExecutor {
 	Main plugin;
@@ -20,8 +21,8 @@ public class PollCommand implements CommandExecutor {
 		if(cmd.getName().equalsIgnoreCase("poll")){
 			if(args.length == 0){
 				if(sender.hasPermission("poll.create"))
-					sender.sendMessage(Utils.colorize("&e&lPoll &f>&7 To create a poll, type &f\"/poll create <question>\"&7."));
-				sender.sendMessage(Utils.colorize("&e&lPoll &f>&7 To answer a poll, type &f\"/poll <yes|no>\"&7."));
+					sender.sendMessage(CoreUtils.colorize("&e&lPoll &f>&7 To create a poll, type &f\"/poll create <question>\"&7."));
+				sender.sendMessage(CoreUtils.colorize("&e&lPoll &f>&7 To answer a poll, type &f\"/poll <yes|no>\"&7."));
 			}
 			if(args.length > 1){
 				if(args[0].equalsIgnoreCase("create")){
@@ -35,7 +36,7 @@ public class PollCommand implements CommandExecutor {
 						PollUtils.createPoll(sender, poll);
 						return false;
 					}
-					sender.sendMessage(Utils.colorize("&e&lPoll &f>&7 You don't have permission to create a poll."));
+					sender.sendMessage(CoreUtils.colorize("&e&lPoll &f>&7 You don't have permission to create a poll."));
 					return false;
 				}
 				
@@ -45,7 +46,7 @@ public class PollCommand implements CommandExecutor {
 					PollUtils.submitPoll((Player) sender, args[0].toLowerCase());
 					return false;
 				}
-				sender.sendMessage(Utils.colorize("&e&lPoll &f>&7 The only acceptable answers are &f\"yes\"&7 and &f\"no\"&7."));
+				sender.sendMessage(CoreUtils.colorize("&e&lPoll &f>&7 The only acceptable answers are &f\"yes\"&7 and &f\"no\"&7."));
 				return false;
 			}
 		}
