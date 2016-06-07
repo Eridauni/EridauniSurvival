@@ -28,25 +28,27 @@ public class ArrowRunnable extends BukkitRunnable {
 		if(!arrow.isOnGround() && !arrow.isDead()){
 			ParticleEffect.FLAME.display(0, 0, 0, 0, 1, arrow.getLocation(), 50);
 			Bukkit.getScheduler().runTaskLater(plugin, new ArrowRunnable(plugin, arrow), (long) 1);
+		} else{
+			Firework f = CoreUtils.createFirework(arrow.getLocation(), FireworkEffect.builder()
+					.with(Type.BALL).
+					withColor(Color.RED).
+					withFlicker().build());
+			
+			
+			
+			
+			f.setOp(true);
+			Bukkit.getScheduler().runTaskLater(plugin, new BukkitRunnable() {
+				
+				@Override
+				public void run() {
+					f.detonate();
+					
+				}
+			},0);
 		}
 		
-		Firework f = CoreUtils.createFirework(arrow.getLocation(), FireworkEffect.builder()
-				.with(Type.BALL).
-				withColor(Color.RED).
-				withFlicker().build());
 		
-		
-		
-		
-		f.setOp(true);
-		Bukkit.getScheduler().runTaskLater(plugin, new BukkitRunnable() {
-			
-			@Override
-			public void run() {
-				f.detonate();
-				
-			}
-		},0);
 	}
 
 }

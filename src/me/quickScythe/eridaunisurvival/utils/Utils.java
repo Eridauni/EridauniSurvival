@@ -26,11 +26,11 @@ public class Utils {
 		Bukkit.addRecipe(gr);
 		
 		ShapedRecipe er = new ShapedRecipe(new ItemStack(Material.ELYTRA));
-		gr.shape("DDD",
+		er.shape("DDD",
 				 "FXF",
 				 "FXF");
-		gr.setIngredient('D', Material.DIAMOND);
-		gr.setIngredient('F', Material.FEATHER);
+		er.setIngredient('D', Material.DIAMOND);
+		er.setIngredient('F', Material.FEATHER);
 		Bukkit.addRecipe(er);
 	}
 
